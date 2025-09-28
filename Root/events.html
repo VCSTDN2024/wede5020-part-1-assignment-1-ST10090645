@@ -1,54 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events - For The Table</title>
+  <meta charset="UTF-8" />
+  <title>Events - For The Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body bgcolor="#f1dec9">
-    <center>
-    <header>
-        <a href="index.html">For The Table</a>
-    </header>
-    </center>
-    
-    <br>
+<body>
+  <!-- Header code for the top of the screen, logo link and links to the other pages. 
+   Ensured that all links open the page in a separate tab-->
+  <header class="site-header">
+    <div class="container header-flex">
+      <div class="logo">
+        <a href="index.html" target="_blank">For The Table</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" target="_blank">Home</a></li>
+          <li><a href="shop.html" target="_blank">Shop</a></li>
+          <li><a class="active" href="events.html" target="_blank">Events</a></li>
+          <li><a href="about.html" target="_blank">About</a></li>
+          <li><a href="contact.html" target="_blank">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <center>
-    <nav>
-        <l>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </l>
-    </nav>
-    </center>
-    
-    <main>
-        <section><!--Tags are not centered in this page due to the large amounts of text-->
-            <h1>Upcoming Events:</h1>
-            <p>Explore our upcoming events:</p>
-            <h2>Baldur's Gate 3 Cosplay Contest:</h2>
-            <p>Join us for a thrilling cosplay contest in honor of Baldur's Gate 3's first anniversary! 
+  
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1 class="section__title">Upcoming Events</h1>
+        <p>Join us for exciting tabletop, board game, and TCG events throughout the year!</p>
+
+        <!-- Section for all current events to be displayed along with their corresponding information -->
+        <article class="parchment-card section" style="margin-top:1.5rem;">
+          <h2 class="section__title">Baldur’s Gate 3 Cosplay Contest</h2>
+          <div class="img-placeholder img-placeholder--wide" aria-hidden="true"></div>
+          <p>
+            Join us for a thrilling cosplay contest in honor of Baldur's Gate 3's first anniversary! 
                 A critically acclaimed RPG set in the Forgotten Realms!
-                Show off your best costumes and stand a chance to win exciting prizes.</p>
-            <img src="images/BG3.jpg" width="600" height="300">
-            <l>
-                <li>Date: TBD</li>
-                <li>Location: Melrose Arch</li>
-                <li>Time: 16:00-18:00</li>
-                <li>Prizes: "For The Table" merchandise and gift cards!</li>
-                <li>Entry Fee: Free!</li>
-            </l>
-            <br>
-    </main>
+                Show off your best costumes and stand a chance to win exciting prizes!
+          </p>
+          <ul>
+            <li><strong>Date:</strong> TBD</li>
+            <li><strong>Location:</strong> Melrose Arch</li>
+            <li><strong>Time:</strong> 16:00–18:00</li>
+            <li><strong>Prizes:</strong> For The Table merchandise and gift cards</li>
+            <li><strong>Entry Fee:</strong> Free!</li>
+          </ul>
+        </article>
 
-    <footer>
-        <hr>
-        <p>&copy; For The Table Ltd., 2025</p>
-    </footer>
+        <article class="parchment-card section">
+          <h2 class="section__title">Magic: The Gathering Draft Night</h2>
+          <div class="img-placeholder img-placeholder--wide" aria-hidden="true"></div>
+          <p>
+            Test your deck-building skills in our weekly MTG draft nights. Cards, competition, and community await!
+          </p>
+          <ul>
+            <li><strong>Date:</strong> Every Friday</li>
+            <li><strong>Location:</strong> Menlyn Park</li>
+            <li><strong>Time:</strong> 18:30–22:00</li>
+            <li><strong>Entry Fee:</strong> R120 (includes booster packs)</li>
+          </ul>
+        </article>
 
+        <article class="parchment-card section">
+          <h2 class="section__title">Board Game Sunday</h2>
+          <div class="img-placeholder img-placeholder--wide" aria-hidden="true"></div>
+          <p>
+            Bring your friends (or make new ones!) as we explore classic and new board games every Sunday afternoon.
+          </p>
+          <ul>
+            <li><strong>Date:</strong> Weekly, every Sunday</li>
+            <li><strong>Location:</strong> Melrose Arch</li>
+            <li><strong>Time:</strong> 13:00–17:00</li>
+            <li><strong>Entry Fee:</strong> Free play event</li>
+          </ul>
+        </article>
+
+        <!-- Link back to home page -->
+        <div style="margin-top:2rem;">
+          <a class="btn btn--ghost" href="index.html" target="_blank">Back to Home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; For The Table Ltd., 2025</p>
+  </footer>
 </body>
 </html>

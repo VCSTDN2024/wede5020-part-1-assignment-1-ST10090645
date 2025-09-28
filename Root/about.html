@@ -1,54 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - For The Table</title>
+  <meta charset="UTF-8" />
+  <title>About - For The Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body bgcolor="#f1dec9">
-    <center>
-    <header>
-        <a href="index.html">For The Table</a>
-    </header>
-    </center>
+<body>
+  <!-- Header code for the top of the screen, logo link and links to the other pages. 
+   Ensured that all links open the page in a separate tab-->
+  <header class="site-header">
+    <div class="container header-flex">
+      <div class="logo">
+        <a href="index.html" target="_blank">For The Table</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" target="_blank">Home</a></li>
+          <li><a href="shop.html" target="_blank">Shop</a></li>
+          <li><a href="events.html" target="_blank">Events</a></li>
+          <li><a class="active" href="about.html" target="_blank">About</a></li>
+          <li><a href="contact.html" target="_blank">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <br>
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1 class="section__title" style="text-align:center;">About Us</h1>
 
-    <center>
-    <nav>
-        <l>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </l>
-    </nav>
-    </center>
-    <main>
-        <section><!--Similarly to the events page, content is not centered throughout to improve readability. More <br> tags are used-->
-            <h1>Who are we?</h1>
-            <p>For The Table is a proud tabletop gaming retailer, who specializes in stocking and redistributing a vast collection of tabletop, 
-            card and board games, such as Dungeons & Dragons, Magic: The Gathering, Gloomhaven, and much more. <br>
-            We have two locations, Melrose Arch, Johannesburg, as well as Menlyn Park Shopping Centre, Pretoria 
-            and we strive to expand our ever growing collection of the latest games in order to continue being your go-to supplier. <br>
+        <!-- created a grid to contain the three cards for the "About Us" information -->
+        <div class="about-grid">
+          <!-- "Who are We" card -->
+          <article class="parchment-card about-card">
+            <div class="img-placeholder about-card__img" aria-hidden="true"></div>
+
+            <h2 class="about-card__title">Who Are We?</h2>
+            <p class="about-card__text">
+              For The Table is a proud tabletop gaming retailer, specializing in tabletop, card, and
+              board games — from Dungeons &amp; Dragons and Magic: The Gathering to Gloomhaven and more.
+              We’re based in Melrose Arch (Johannesburg) and Menlyn Park (Pretoria), and always growing.
             </p>
-            <img src="images/MenlynStock1.jpg" width="400" height="200">
-            <h1>Our History</h1>
-            <p>Our business started off as two passionate tabletop gamers, who, after the wake of the global COVID-19 pandemic, 
-            sought to revitalize the tabletop gaming hobby by making it more accessible and easy to get into than ever. 
-                Thus, For the Table was born, a small, niche shop in a quiet corner of Sandton, has now grown at a modest pace and now has two locations across the country, 
-                as well as a new website/online store (that's where you are right now!).</p>
-                <img src="images/StockImage1.jpg" width="400" height="200">
-            <h1>Our Goal</h1>
-            <p>Our hope and goal is to not only be a reliable supplier but also foster a life-changing hobby in many others that brings people together and helps create epic memories. 
-            Look forward to exciting in-person events, as well as some digital online events for those who are a little shy, where you'll hopefully find new friends and new games to add to your game nights!</p>
-            <img src="images/StockImage2.jpg" width="400" height="200">
-        </section>
-    </main>
-    <footer>
-        <hr>
-        <p>&copy; For The Table Ltd., 2025</p>
-    </footer>
+          </article>
+
+          <!-- "History card" -->
+          <article class="parchment-card about-card">
+            <div class="img-placeholder about-card__img" aria-hidden="true"></div>
+            
+            <h2 class="about-card__title">Our History</h2>
+            <p class="about-card__text">
+              Born from two passionate gamers after COVID-19, we set out to make the hobby more
+              accessible than ever. From a small Sandton storefront to two locations and an online
+              home — the journey continues.
+            </p>
+          </article>
+
+          <!-- "Goal card"-->
+          <article class="parchment-card about-card">
+            <div class="img-placeholder about-card__img" aria-hidden="true"></div>
+            
+            <h2 class="about-card__title">Our Goal</h2>
+            <p class="about-card__text">
+              We’re more than a shop — we’re a community. Expect in-person events, beginner sessions,
+              and online gatherings. Make new friends, discover new games, and forge epic memories.
+            </p>
+          </article>
+        </div>
+
+        <!-- Link to take users straight to the shop page -->
+        <div style="text-align:center; margin-top:1.5rem;">
+          <a class="btn btn--ghost" href="shop.html" target="_blank">Browse the Shop</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; For The Table Ltd., 2025</p>
+  </footer>
 </body>
 </html>

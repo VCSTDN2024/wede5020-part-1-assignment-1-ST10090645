@@ -1,74 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop - For The Table</title>
+  <meta charset="UTF-8" />
+  <title>Shop - For The Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <body bgcolor="#f1dec9">
-    <center>
-    <header>
-        <a href="index.html">For The Table</a>
-    </header>
-    </center>
-    
-    <br>
+   <!-- Header code for the top of the screen, logo link and links to the other pages. 
+   Ensured that all links open the page in a separate tab-->
+  <header class="site-header">
+    <div class="container header-flex">
+      <div class="logo">
+        <a href="index.html" target="_blank">For The Table</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" target="_blank">Home</a></li>
+          <li><a class="active" href="shop.html" target="_blank">Shop</a></li>
+          <li><a href="events.html" target="_blank">Events</a></li>
+          <li><a href="about.html" target="_blank">About</a></li>
+          <li><a href="contact.html" target="_blank">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <center>
-    <nav>
-        <l>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </l>
-    </nav>
-    </center>
+ 
+  <main>
 
-    <center>
-    <main>
-        <section><!--Displaying all shop items and prices <br> tags used for proper formatting-->
-            <h1>Welcome to the Shop</h1>
-            <p>Explore our vast array of items for purchase:</p>
-        
-        <h2>Tabletop</h2>
-        <img src="images/StarterSet.jpg" width="300" height="300">
-            <p>D&D Starter Set: Dragons from Stormwreck Isle - R500</p>
-            <a href="construction.html"><button>Add to Cart</button></a>
-            <br><br>
+    <!-- Welcome section for the shop page -->
+    <section class="section">
+      <div class="container">
+        <h1 class="section__title">Welcome to the Shop</h1>
+        <p>Explore our vast array of items for purchase:</p>
+      </div>
+    </section>
 
-            <img src="images/EssentialsKit.jpg" width="450" height="300">
-            <p>D&D Essentials Kit - R400</p>
-            <a href="construction.html"><button>Add to Cart</button></a>
-            <br>
+    <!-- Tabletop shop category -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section__title">Tabletop</h2>
+        <div class="product-grid">
+          
+          <article class="product-card">
+            <div class="img-placeholder"></div>
+            <h3 class="product-card__name">D&amp;D Starter Set</h3>
+            <p class="product-card__price">R500</p>
+            <a class="btn btn--primary" href="construction.html" target="_blank">Add to Cart</a>
+          </article>
 
-        <h2>Board Games</h2>
-        <img src="images/Gloomhaven.jpg" width="300" height="300">
-            <p>Gloomhaven (Board Game) - R1400</p>
-            <a href="construction.html"><button>Add to Cart</button></a>
-            <br><br>
-        <img src="images/Risk.jpg" width="450" height="300">
-            <p>Risk (Board Game) - R600</p>
-            <a href="construction.html"><button>Add to Cart</button></a>
-            <br>
-        <h2>Memorabilia</h2>
-        <img src="images/Vortex.jpg" width="300" height="300">
-            <p>Vortex Dice Set - R180</p>
-            <a href="construction.html"><button>Add to Cart</button></a>
-            <br><br>
-        <a href="index.html">Back to home.</a>
-        </section>
+          
+          <article class="product-card">
+            <div class="img-placeholder"></div>
+            <h3 class="product-card__name">D&amp;D Essentials Kit</h3>
+            <p class="product-card__price">R400</p>
+            <a class="btn btn--primary" href="construction.html" target="_blank">Add to Cart</a>
+          </article>
 
-    </main>
+         
+          <article class="product-card">
+            <div class="img-placeholder"></div>
+            <h3 class="product-card__name">Player’s Handbook (5e)</h3>
+            <p class="product-card__price">R750</p>
+            <a class="btn btn--primary" href="construction.html" target="_blank">Add to Cart</a>
+          </article>
 
-    </center>
+          
+          <article class="product-card">
+            <div class="img-placeholder"></div>
+            <h3 class="product-card__name">Dungeon Master’s Guide</h3>
+            <p class="product-card__price">R800</p>
+            <a class="btn btn--primary" href="construction.html" target="_blank">Add to Cart</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <footer>
-        <hr>
-        <p>&copy; For The Table Ltd., 2025</p>
-    </footer>
-    
+    <!-- Board Games section of shop -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section__title">Board Games</h2>
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="img-placeholder"></div>
+            <h3 class="product-card__name">Gloomhaven</h3>
+            <p class="product-card__price">R1400</p>
+            <a class="btn btn--primary" href="construction.html" target="_blank">Add to Cart</a>
+          </article>
+
+          <article class="product-card">
+            <div class="img-placeholder"></div>
+            <h3 class="product-card__name">Risk</h3>
+            <p class="product-card__price">R600</p>
+            <a class="btn btn--primary" href="construction.html" target="_blank">Add to Cart</a>
+          </article>
+
+          <article class="product-card">
+            <div class="img-placeholder"></div>
+            <h3 class="product-card__name">Catan</h3>
+            <p class="product-card__price">R550</p>
+            <a class="btn btn--primary" href="construction.html" target="_blank">Add to Cart</a>
+          </article>
+
+          <article class="product-card">
+            <div class="img-placeholder"></div>
+            <h3 class="product-card__name">Ticket to Ride</h3>
+            <p class="product-card__price">R700</p>
+            <a class="btn btn--primary" href="construction.html" target="_blank">Add to Cart</a>
+          </article>
+
+          <article class="product-card">
+            <div class="img-placeholder"></div>
+            <h3 class="product-card__name">Pandemic</h3>
+            <p class="product-card__price">R650</p>
+            <a class="btn btn--primary" href="construction.html" target="_blank">Add to Cart</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Memorabilia section of shop -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section__title">Memorabilia</h2>
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="img-placeholder"></div>
+            <h3 class="product-card__name">Vortex Dice Set</h3>
+            <p class="product-card__price">R180</p>
+            <a class="btn btn--primary" href="construction.html" target="_blank">Add to Cart</a>
+          </article>
+
+          <article class="product-card">
+            <div class="img-placeholder"></div>
+            <h3 class="product-card__name">Dragon Miniature</h3>
+            <p class="product-card__price">R250</p>
+            <a class="btn btn--primary" href="construction.html" target="_blank">Add to Cart</a>
+          </article>
+
+          <article class="product-card">
+            <div class="img-placeholder"></div>
+            <h3 class="product-card__name">MTG Collector’s Playmat</h3>
+            <p class="product-card__price">R320</p>
+            <a class="btn btn--primary" href="construction.html" target="_blank">Add to Cart</a>
+          </article>
+
+          <article class="product-card">
+            <div class="img-placeholder"></div>
+            <h3 class="product-card__name">Dice Tower</h3>
+            <p class="product-card__price">R150</p>
+            <a class="btn btn--primary" href="construction.html" target="_blank">Add to Cart</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Link to take users back to home page -->
+    <section class="section">
+      <div class="container">
+        <a class="btn btn--ghost" href="index.html" target="_blank">Back to Home</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; For The Table Ltd., 2025</p>
+  </footer>
 </body>
 </html>

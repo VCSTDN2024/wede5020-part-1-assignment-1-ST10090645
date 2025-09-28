@@ -1,33 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Under Construction!</title>
+  <meta charset="UTF-8" />
+  <title>Under Construction - For The Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body bgcolor="#f1dec9">
-    <center>
-    <header>
-        <a href="index.html">For The Table</a>
-    </header>
-    
-    
-    <br>
+<body style="display:flex; flex-direction:column; min-height:100vh;">
 
-    
-    <nav>
-        <l>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </l>
-    </nav>
-    
-    <br>
-    <h1>Sorry!</h1>
-    <p>This merchant page is currently under construction. Please check back later for updates.</p>
-    </center>
+  <header class="site-header">
+    <div class="container header-flex">
+      <div class="logo">
+        <a href="index.html" target="_blank">For The Table</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" target="_blank">Home</a></li>
+          <li><a href="shop.html" target="_blank">Shop</a></li>
+          <li><a href="events.html" target="_blank">Events</a></li>
+          <li><a href="about.html" target="_blank">About</a></li>
+          <li><a href="contact.html" target="_blank">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main style="flex:1;">
+    <section class="section">
+      <div class="container">
+        <h1 class="section__title">Page Under Construction</h1>
+
+        <article class="parchment-card" style="text-align:center;">
+          <p style="max-width: 60ch; margin: 0 auto;">
+            This feature is currently being forged in the smithy! Check back soon to see it in action.
+          </p>
+
+          <div style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap; margin-top:1rem;">
+            <a class="btn btn--primary" href="shop.html" target="_blank">Back to Shop</a>
+            <a class="btn btn--ghost" href="index.html" target="_blank">Return Home</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; For The Table Ltd., 2025</p>
+  </footer>
 </body>
 </html>
