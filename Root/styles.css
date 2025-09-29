@@ -43,8 +43,8 @@ h1, h2, h3, h4, h5, h6 {
 
 p { margin-bottom: 1em; font-size: 1rem; }
 
-/* color for links when mouse is hovering over them */
-a:hover { color: #8b5e3c; }
+/* color for links when mouse is hovering over them. */
+a:hover { color: #8b5e3c; } /* Hover pseudoclass is being utilized */
 
 /* style code for main sections within a page*/
 main { padding: 2rem; max-width: 1000px; margin: 0 auto; }
@@ -149,7 +149,7 @@ nav a.active { text-decoration: underline; text-underline-offset: 4px; }
   box-shadow: 0 3px 0 #8b5e3c33;
 }
 
-/* style code for image placeholders */
+/* style code for image placeholders (not needed anymore) 
 .img-placeholder {
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -157,7 +157,36 @@ nav a.active { text-decoration: underline; text-underline-offset: 4px; }
   border: 2px solid #8b5e3c;
   border-radius: 8px;
 }
-.img-placeholder--wide { aspect-ratio: 16 / 9; }
+.img-placeholder--wide { aspect-ratio: 16 / 9; } */
+
+/* style code for the actual images that we are now incoporating */
+.product-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #8b5e3c;
+}
+
+
+.event-img {
+  width: 100%;
+  height: auto;           /* keeps each image’s original ratio */
+  border: 2px solid #8b5e3c;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+
+
+.about-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;   /* photo look */
+  object-fit: cover;
+  border: 2px solid #8b5e3c;
+  border-radius: 8px;
+}
 
 .product-grid {
   display: grid;
@@ -228,14 +257,14 @@ nav a.active { text-decoration: underline; text-underline-offset: 4px; }
 
 /* responsive buttons for mobile/tablet users */
 
-a:focus-visible,
+a:focus-visible, /* focus-visible pseudoclass */
 button:focus-visible {
   outline: 3px solid #c46f2e;
   outline-offset: 2px;
   border-radius: 6px;
 }
-a:active, button:active { transform: translateY(1px); }
-button:disabled, .btn[aria-disabled="true"] { opacity: 0.6; cursor: not-allowed; }
+a:active, button:active { transform: translateY(1px); } /* active and disabled pseudoclasses */
+button:disabled, .btn[aria-disabled="true"] { opacity: 0.6; cursor: not-allowed; } 
 
 /* responsive design as requested for the assignment */
 
@@ -309,3 +338,6 @@ Code taken from and inspired by: https://developer.mozilla.org/en-US/docs/Web/CS
     scroll-behavior: auto !important;
   }
 }
+
+
+
