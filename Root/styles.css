@@ -352,10 +352,9 @@ Code taken from and inspired by: https://developer.mozilla.org/en-US/docs/Web/CS
 
 html { background-color: #f1dec9; } 
 
-/* --- Accessible helper --- */
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 
-/* --- Feature Carousel --- */
+/* Feature Carousel */
 .feature-wrap { position: relative; overflow: visible; }
 
 .feature-carousel {
@@ -410,7 +409,7 @@ html { background-color: #f1dec9; }
 }
 .feature-title { margin: 0 0 0.25rem; }
 
-/* Full-slide click target (sits above image, below caption/buttons) */
+/* Full-slide click target */
 .feature-slide-click {
   position:absolute; inset:0; border:0; background:transparent; cursor:pointer;
 }
@@ -424,7 +423,6 @@ html { background-color: #f1dec9; }
   opacity: 0.9; cursor: pointer;
 }
 .feature-nav:hover { opacity: 1; }
-/* Nudge them outside the carousel box */
 .feature-nav.prev { left: -2.75rem; }
 .feature-nav.next { right: -2.75rem; }
 
@@ -435,7 +433,7 @@ html { background-color: #f1dec9; }
   .feature-nav.next { right: -2rem; }
 }
 
-/* --- Lightbox --- */
+/* Lightbox  */
 .ftt-lightbox[hidden] { display: none; }
 .ftt-lightbox {
   position: fixed; inset: 0; z-index: 9999;
@@ -443,18 +441,17 @@ html { background-color: #f1dec9; }
 .ftt-lightbox__backdrop {
   position: absolute; inset: 0;
   background: rgba(0,0,0,0.8);
-  z-index: 1; /* ensure backdrop sits below content */
+  z-index: 1; 
 }
 
-/* more room for thumbnails and bigger, cleaner look (LB only) */
+/* more room for thumbnails and bigger made them bigger than original */
 .ftt-lightbox__content {
-  /* add bottom padding so the main image never hides behind the thumbs */
   padding: 2rem 2rem 8rem;
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
-  z-index: 2; /* content above backdrop */
+  z-index: 2; 
 }
 
 .ftt-lightbox__thumbs {
@@ -467,10 +464,9 @@ html { background-color: #f1dec9; }
   max-width: 92vw;
   overflow-x: auto;
   padding: 0.25rem 0.25rem;
-  z-index: 3; /* thumbnails above backdrop too */
+  z-index: 3; 
 }
 
-/* make buttons visually “container-less” */
 .ftt-lightbox__thumbs button {
   background: transparent;
   border: 0;
@@ -481,8 +477,8 @@ html { background-color: #f1dec9; }
 /* bigger thumbnails */
 .ftt-lightbox__thumbs img {
   display: block;
-  width: 120px;    /* was ~70px */
-  height: 84px;    /* 16:9-ish; tweak as you like */
+  width: 120px;    
+  height: 84px;    
   object-fit: cover;
   border-radius: 6px;
 }
@@ -492,22 +488,22 @@ html { background-color: #f1dec9; }
   box-shadow: 0 0 0 3px #8b5e3c;
 }
 
-/* accessible focus ring (keyboard users) */
+
 .ftt-lightbox__thumbs button:focus-visible img {
   outline: 3px solid #c46f2e;
   outline-offset: 3px;
 }
 
-/* let the hero image breathe a bit more now that thumbs have space */
+
 .ftt-lightbox__img {
   max-width: 90vw;
-  max-height: 78vh; /* was 70vh */
+  max-height: 78vh; 
   display: block;
   border: 2px solid #8b5e3c;
   border-radius: 8px;
   background: #f1e3ce;
-  filter: none;      /* make sure no accidental darkening */
-  opacity: 1;        /* ensure fully opaque */
+  filter: none;     
+  opacity: 1;        
 }
 
 .ftt-lightbox__close,
@@ -521,7 +517,7 @@ html { background-color: #f1dec9; }
 .ftt-lightbox__prev { left: 1rem; top: 50%; transform: translateY(-50%); }
 .ftt-lightbox__next { right: 1rem; top: 50%; transform: translateY(-50%); }
 
-/* ensure featured images truly fill the frame (override global img margins/borders) */
+/* ensure featured images truly fill the frame  */
 .feature-slide picture,
 .feature-slide img {
   display: block;
@@ -532,6 +528,176 @@ html { background-color: #f1dec9; }
   margin: 0 !important;
   border: 0 !important;
 }
+
+/* Shop tabs  */
+.shop-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.shop-tab {
+  background-color: #f6ebdb;
+  color: #2b1d0e;
+  border: 2px solid #8b5e3c;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+.shop-tab:hover {
+  background-color: #e6d3b3;
+}
+.shop-tab.is-active {
+  background-color: #8b5e3c;
+  color: #fff;
+}
+
+/*  Shop panels (fade in/out)  */
+:root { --tabs-fade-ms: var(--fade-ms, 300ms); }
+
+.shop-panel {
+  display: none;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shop-panel.is-active,
+  .shop-panel.is-hiding {
+    display: block;
+    transition: opacity var(--tabs-fade-ms) ease;
+  }
+  .shop-panel.is-active {
+    opacity: 1;
+  }
+  .shop-panel.is-hiding {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shop-panel.is-active {
+    display: block;
+    opacity: 1;
+  }
+}
+
+/* Shop controls (tabs + search) */
+.shop-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.shop-search {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.shop-search input[type="search"] {
+  background-color: #f6ebdb;
+  color: #2b1d0e;
+  border: 2px solid #8b5e3c;
+  border-radius: 8px;
+  padding: 0.45rem 0.6rem;
+  min-width: 260px;
+}
+
+.shop-search input[type="search"]::placeholder {
+  color: #6b4a2d;
+}
+
+.shop-search button[type="reset"] {
+  background-color: #2b1d0e;
+  color: #fff;
+  border: 2px solid #8b5e3c;
+  border-radius: 8px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
+
+.shop-search button[type="reset"]:hover {
+  background-color: #4b2e16;
+}
+
+
+@media (max-width: 700px) {
+  .shop-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .shop-search {
+    justify-content: flex-start;
+  }
+  .shop-search input[type="search"] {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* search panel helper text */
+.search-hint {
+  margin-bottom: 1rem;
+  color: #4b2e16;
+}
+
+.shop-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  /* aligns tabs and search bar vertically */
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+:root {
+  --shop-control-h: 44px; 
+}
+
+
+.shop-tabs {
+  margin-bottom: 0;
+}
+
+.shop-tab,
+.shop-search input[type="search"],
+.shop-search button[type="reset"] {
+  height: var(--shop-control-h);
+  padding-top: 0;
+  padding-bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box; 
+  line-height: 1;         
+}
+
+.shop-tab {
+  padding-left: 0.85rem;
+  padding-right: 0.85rem;
+}
+
+.shop-search input[type="search"] {
+  padding-left: 0.65rem;
+  padding-right: 0.65rem;
+}
+
+.shop-search button[type="reset"] {
+  padding-left: 0.65rem;
+  padding-right: 0.65rem;
+}
+
+.shop-controls {
+  align-items: center;
+}
+
+
+
+
+
+
 
 
 

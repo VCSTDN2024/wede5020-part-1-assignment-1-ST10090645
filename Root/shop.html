@@ -7,8 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="js-fade">
-   <!-- Header code for the top of the screen, logo link and links to the other pages. 
-   Ensured that all links open the page in a separate tab-->
+   <!-- Header code for the top of the screen, logo link and links to the other pages. -->
   <header class="site-header">
     <div class="container header-flex">
       <div class="logo">
@@ -37,8 +36,70 @@
       </div>
     </section>
 
+<!-- Shop tabs + search feature -->
+<div class="shop-controls">
+
+  <nav class="shop-tabs" role="tablist" aria-label="Shop categories">
+    <button
+      id="tab-tabletop"
+      class="shop-tab is-active"
+      role="tab"
+      aria-selected="true"
+      aria-controls="panel-tabletop"
+      data-target="panel-tabletop">Tabletop</button>
+
+    <button
+      id="tab-board"
+      class="shop-tab"
+      role="tab"
+      aria-selected="false"
+      aria-controls="panel-board"
+      data-target="panel-board">Board Games &amp; TCG</button>
+
+    <button
+      id="tab-memorabilia"
+      class="shop-tab"
+      role="tab"
+      aria-selected="false"
+      aria-controls="panel-memorabilia"
+      data-target="panel-memorabilia">Memorabilia</button>
+
+    <button
+      id="tab-search"
+      class="shop-tab"
+      role="tab"
+      aria-selected="false"
+      aria-controls="panel-search"
+      data-target="panel-search">Search for Items...</button>
+  </nav>
+
+  <!-- Search feature on right-hand side of sceen -->
+  <form class="shop-search" role="search" aria-label="Search products">
+    <label for="shopQuery" class="sr-only">Search products</label>
+    <input
+      id="shopQuery"
+      name="q"
+      type="search"
+      placeholder="Search products…"
+      autocomplete="off"
+      inputmode="search" />
+    <button type="reset" title="Clear search" aria-label="Clear">✕</button>
+  </form>
+</div>
+
+<!-- Search results display -->
+<section class="section shop-panel" id="panel-search" role="tabpanel" aria-labelledby="tab-search">
+  <div class="container">
+    <h2 class="section__title">Search Results</h2>
+    <p class="search-hint">Start typing to find items across all categories.</p>
+    <div class="product-grid" id="searchGrid"></div>
+  </div>
+</section>
+
+
+
     <!-- Tabletop shop category -->
-    <section class="section">
+    <section class="section shop-panel is-active" id="panel-tabletop" role="tabpanel" aria-labelledby="tab-tabletop">
       <div class="container">
         <h2 class="section__title">Tabletop</h2>
         <div class="product-grid">
@@ -78,7 +139,7 @@
     </section>
 
     <!-- Board Games section of shop -->
-    <section class="section">
+    <section class="section shop-panel" id="panel-board" role="tabpanel" aria-labelledby="tab-board">
       <div class="container">
         <h2 class="section__title">Board Games & TCG</h2>
         <div class="product-grid">
@@ -121,7 +182,7 @@
     </section>
 
     <!-- Memorabilia section of shop -->
-    <section class="section">
+    <section class="section shop-panel" id="panel-memorabilia" role="tabpanel" aria-labelledby="tab-memorabilia">
       <div class="container">
         <h2 class="section__title">Memorabilia</h2>
         <div class="product-grid">
