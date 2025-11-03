@@ -1,5 +1,5 @@
 // Page Fade-In/Fade-Out animation
-(function () {
+; (function () {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const cssFade = getComputedStyle(document.documentElement).getPropertyValue('--fade-ms').trim();
   const fadeMs = parseInt(cssFade) || 300;
@@ -48,17 +48,14 @@
 })();
 
 /* Lightbox/Carousel */
-(function () {
+; (function () {
   const carousel = document.querySelector('.feature-carousel');
   if (!carousel) return;
 
   const slides = Array.from(carousel.querySelectorAll('.feature-slide'));
-
-  // Arrows are outside the carousel
   const wrap = carousel.closest('.feature-wrap') || document;
   const prevBtn = wrap.querySelector('.feature-nav.prev');
   const nextBtn = wrap.querySelector('.feature-nav.next');
-
   let index = 0;
 
   function setActive(i) {
@@ -77,7 +74,6 @@
     if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
   });
 
-  // Lightbox
   const lb = document.querySelector('.ftt-lightbox');
   if (!lb) { setActive(0); return; }
 
@@ -102,7 +98,6 @@
     lbImg.src = meta.src;
     lbImg.alt = meta.alt;
 
-    // thumbnail highlight
     if (thumbsWrap) {
       Array.from(thumbsWrap.querySelectorAll('button')).forEach((b, bi) => {
         b.setAttribute('aria-current', bi === index ? 'true' : 'false');
@@ -123,7 +118,6 @@
     document.body.style.overflow = '';
   }
 
-  // Build thumbnails once
   if (thumbsWrap && !thumbsWrap.childElementCount) {
     slides.forEach((s, i) => {
       const img = s.querySelector('img');
@@ -141,7 +135,6 @@
     });
   }
 
-  // Lightbox controls
   lbPrev && lbPrev.addEventListener('click', () => lbSet(index - 1));
   lbNext && lbNext.addEventListener('click', () => lbSet(index + 1));
   lbCloseEls.forEach(el => el.addEventListener('click', closeLightbox));
@@ -152,7 +145,6 @@
     if (e.key === 'ArrowRight') lbSet(index + 1);
   });
 
-  // Clicking a slide opens lightbox
   slides.forEach((s, i) => {
     const trigger = s.querySelector('.feature-slide-click') || s;
     trigger.addEventListener('click', (e) => {
@@ -161,12 +153,11 @@
     });
   });
 
-  // Init
   setActive(0);
 })();
 
 // Shop tabs 
-(function () {
+; (function () {
   const tabsRoot = document.querySelector('.shop-tabs');
   if (!tabsRoot) return;
 
@@ -218,7 +209,6 @@
     }
   }
 
-  // Click
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       activateTab(tab);
@@ -228,7 +218,6 @@
     });
   });
 
-  // Keyboard (ArrowLeft/Right)
   tabsRoot.addEventListener('keydown', (e) => {
     const i = tabs.indexOf(document.activeElement);
     if (i < 0) return;
@@ -241,18 +230,15 @@
     }
   });
 
-  // Init
   const initialTab = getActiveTab();
   const initialPanel = byId(initialTab?.dataset.target) || panels[0];
   activateTab(initialTab);
   showPanel(initialPanel);
-
-  // expose switchTo for search module (scoped via dataset on root)
   tabsRoot.dataset.switchReady = '1';
 })();
 
 // Search Feature 
-(function () {
+; (function () {
   const controls = document.querySelector('.shop-controls');
   if (!controls) return;
 
@@ -271,7 +257,6 @@
   const input = byId('shopQuery');
   const resetBtn = document.querySelector('.shop-search button[type="reset"]');
 
-  // Index product cards 
   const cards = Array.from(document.querySelectorAll('.shop-panel .product-card'));
   const index = cards.map(card => {
     const name = (card.querySelector('.product-card__name')?.textContent || '').trim();
@@ -359,7 +344,6 @@
     if (!input) return;
     input.value = '';
     renderResults('');
-    // go back to first tab smoothly
     const firstTab = byId('tab-tabletop') || tabs[0];
     activateTab(firstTab);
     switchTo(firstTab.dataset.target);
@@ -373,8 +357,7 @@
 })();
 
 // Accordion FAQ section
-
-(function () {
+; (function () {
   const root = document.querySelector('.faq .accordion');
   if (!root) return;
 
@@ -384,19 +367,16 @@
     const panelId = trigger.getAttribute('aria-controls');
     const panel = document.getElementById(panelId);
     if (!panel) return;
-
     trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
     panel.setAttribute('aria-hidden', open ? 'false' : 'true');
   }
 
-  // Click to toggle
   triggers.forEach((btn) => {
     btn.addEventListener('click', () => {
       const isOpen = btn.getAttribute('aria-expanded') === 'true';
       setOpen(btn, !isOpen);
     });
 
-    // close with Escape button on keyboard when focus is inside the panel
     const panelId = btn.getAttribute('aria-controls');
     const panel = document.getElementById(panelId);
     if (panel) {
@@ -409,12 +389,11 @@
     }
   });
 
-  // Start closed for all
   triggers.forEach((btn) => setOpen(btn, false));
 })();
 
 // Inquiry form and validation 
-(function () {
+; (function () {
   const form = document.getElementById('bizForm');
   if (!form) return;
 
@@ -422,10 +401,8 @@
   const emailEl = form.querySelector('#bizEmail');
   const phoneEl = form.querySelector('#bizPhone');
   const msgEl = form.querySelector('#bizMsg');
-
   const modal = document.getElementById('bizModal');
   const summaryList = document.getElementById('bizSummary');
-
   const emailHint = emailEl.nextElementSibling;
   const phoneHint = phoneEl.nextElementSibling;
   const nameHint = nameEl.nextElementSibling;
@@ -449,7 +426,6 @@
 
   function validateEmail() {
     const v = emailEl.value.trim();
-    // validation for correct email format
     const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
     if (!ok) {
       setHint(emailEl, emailHint, 'Please enter a valid email address (e.g., you@example.com).', true);
@@ -460,7 +436,7 @@
   }
 
   function validatePhone() {
-    const digits = phoneEl.value.replace(/\D+/g, ''); //Validation for appropriate phone number length
+    const digits = phoneEl.value.replace(/\D+/g, '');
     if (digits.length !== 10) {
       setHint(phoneEl, phoneHint, 'Phone must be exactly 10 digits.', true);
       return false;
@@ -469,61 +445,50 @@
     return true;
   }
 
-  // Live validation as the user types
   nameEl.addEventListener('input', validateName);
   emailEl.addEventListener('input', validateEmail);
-  phoneEl.addEventListener('input', () => {
-    
-    validatePhone();
-  });
+  phoneEl.addEventListener('input', validatePhone);
 
-  // Submit error handling
   form.addEventListener('submit', (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const okName = validateName();
-  const okEmail = validateEmail();
-  const okPhone = validatePhone();
+    const okName = validateName();
+    const okEmail = validateEmail();
+    const okPhone = validatePhone();
+    const roles = Array.from(form.querySelectorAll('input[name="roles"]:checked')).map((c) => c.value);
+    const hasRole = roles.length > 0;
+    if (!hasRole) {
+      alert('Please select at least one option under "How can we help you, help us?"');
+      return;
+    }
+    if (!(okName && okEmail && okPhone && hasRole)) {
+      const firstInvalid = form.querySelector('.is-invalid');
+      if (firstInvalid) firstInvalid.focus();
+      return;
+    }
 
-  const roles = Array.from(form.querySelectorAll('input[name="roles"]:checked'))
-    .map((c) => c.value);
+    const digits = phoneEl.value.replace(/\D+/g, '');
+    const summary = [
+      { label: 'Name', value: nameEl.value.trim() },
+      { label: 'Email', value: emailEl.value.trim() },
+      { label: 'Phone', value: digits.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3') },
+      { label: 'Roles', value: roles.join(', ') },
+      { label: 'Notes', value: msgEl.value.trim() || '—' },
+    ];
 
-  const hasRole = roles.length > 0;
-  if (!hasRole) {
-    alert('Please select at least one option under "How can we help you, help us?"');
-    return;
-  }
+    summaryList.innerHTML = '';
+    summary.forEach((item) => {
+      const li = document.createElement('li');
+      li.textContent = `${item.label}: ${item.value}`;
+      summaryList.appendChild(li);
+    });
 
-  if (!(okName && okEmail && okPhone && hasRole)) {
-    const firstInvalid = form.querySelector('.is-invalid');
-    if (firstInvalid) firstInvalid.focus();
-    return;
-  }
-
-  const digits = phoneEl.value.replace(/\D+/g, '');
-  const summary = [
-    { label: 'Name', value: nameEl.value.trim() },
-    { label: 'Email', value: emailEl.value.trim() },
-    { label: 'Phone', value: digits.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3') },
-    { label: 'Roles', value: roles.join(', ') },
-    { label: 'Notes', value: msgEl.value.trim() || '—' },
-  ];
-
-  summaryList.innerHTML = '';
-  summary.forEach((item) => {
-    const li = document.createElement('li');
-    li.textContent = `${item.label}: ${item.value}`;
-    summaryList.appendChild(li);
+    openModal();
   });
 
-  openModal();
-});
-
-  // Modal helpers
   function openModal() {
     modal.removeAttribute('hidden');
     document.body.style.overflow = 'hidden';
-    
     const closeBtn = modal.querySelector('[data-close]');
     if (closeBtn) closeBtn.focus();
   }
@@ -534,18 +499,13 @@
   }
 
   modal.addEventListener('click', (e) => {
-    if (e.target.matches('[data-close]') || e.target.classList.contains('modal__backdrop')) {
-      closeModal();
-    }
+    if (e.target.matches('[data-close]') || e.target.classList.contains('modal__backdrop')) closeModal();
   });
-
-  modal.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-  });
+  modal.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 })();
 
-/* Contact page form and modal */
-(function () {
+// Contact page form and modal + AJAX email via Google Apps Script
+; (function () {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
@@ -558,15 +518,14 @@
   const emailEl = form.querySelector('#cEmail');
   const jobEl = form.querySelector('#cJob');
   const msgEl = form.querySelector('#cMessage');
-
   const modal = document.getElementById('contactModal');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  const endpoint = "https://script.google.com/macros/s/AKfycbyMNxm3KP05n2uqKRRy30rjB5n50uoS6fw01mOAKm1ElmXV27fSYcsrBgu3dGxfo5K99Q/exec";
 
   function hintFor(el) {
-    return el?.nextElementSibling?.matches('.field-hint')
-      ? el.nextElementSibling
-      : null;
+    return el?.nextElementSibling?.matches('.field-hint') ? el.nextElementSibling : null;
   }
-
   function setHint(el, message, isError) {
     const hint = hintFor(el);
     if (!hint) return;
@@ -577,55 +536,30 @@
 
   function reqText(el, label) {
     const v = el.value.trim();
-    if (!v) {
-      setHint(el, `Please enter your ${label}.`, true);
-      return false;
-    }
-    setHint(el, 'Looks good!');
-    return true;
+    if (!v) { setHint(el, `Please enter your ${label}.`, true); return false; }
+    setHint(el, 'Looks good!'); return true;
   }
-
   function validateEmail() {
     const v = emailEl.value.trim();
     const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
-    if (!ok) {
-      setHint(emailEl, 'Please enter a valid email address (e.g., you@example.com).', true);
-      return false;
-    }
-    setHint(emailEl, 'Looks good!');
-    return true;
+    if (!ok) { setHint(emailEl, 'Please enter a valid email address (e.g., you@example.com).', true); return false; }
+    setHint(emailEl, 'Looks good!'); return true;
   }
-
   function validatePhone() {
     const digits = phoneEl.value.replace(/\D+/g, '');
-    if (digits.length !== 10) {
-      setHint(phoneEl, 'Phone must be exactly 10 digits.', true);
-      return false;
-    }
-    setHint(phoneEl, 'Perfect length!');
-    return true;
+    if (digits.length !== 10) { setHint(phoneEl, 'Phone must be exactly 10 digits.', true); return false; }
+    setHint(phoneEl, 'Perfect length!'); return true;
   }
-
   function validateAge() {
     const n = Number(ageEl.value);
-    if (!Number.isFinite(n) || n < 1 || n > 120) {
-      setHint(ageEl, 'Please enter a valid age (1–120).', true);
-      return false;
-    }
-    setHint(ageEl, 'Looks good!');
-    return true;
+    if (!Number.isFinite(n) || n < 1 || n > 120) { setHint(ageEl, 'Please enter a valid age (1–120).', true); return false; }
+    setHint(ageEl, 'Looks good!'); return true;
   }
-
   function validateGender() {
-    if (!genderEl.value) {
-      setHint(genderEl, 'Please select a gender option.', true);
-      return false;
-    }
-    setHint(genderEl, 'Thanks!');
-    return true;
+    if (!genderEl.value) { setHint(genderEl, 'Please select a gender option.', true); return false; }
+    setHint(genderEl, 'Thanks!'); return true;
   }
 
-  // Live validation
   nameEl.addEventListener('input', () => reqText(nameEl, 'name'));
   surnameEl.addEventListener('input', () => reqText(surnameEl, 'surname'));
   cityEl.addEventListener('input', () => reqText(cityEl, 'city'));
@@ -636,8 +570,7 @@
   ageEl.addEventListener('input', validateAge);
   genderEl.addEventListener('change', validateGender);
 
-  // Submit
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const ok =
@@ -657,36 +590,66 @@
       return;
     }
 
-    openModal();
-    form.reset();
-    [nameEl, surnameEl, ageEl, genderEl, cityEl, phoneEl, emailEl, jobEl, msgEl].forEach((el) =>
-      setHint(el, '')
-    );
+    const payload = {
+      name: nameEl.value.trim(),
+      surname: surnameEl.value.trim(),
+      age: ageEl.value.trim(),
+      gender: genderEl.value,
+      city: cityEl.value.trim(),
+      phone: phoneEl.value.replace(/\D+/g, ''),
+      email: emailEl.value.trim(),
+      occupation: jobEl.value.trim(),
+      message: msgEl.value.trim()
+    };
+
+    // Show "Processing..." and disable button to prevent multiple submissions at once
+    submitBtn.disabled = true;
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Processing...';
+
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+
+      let okResp = false;
+      const text = await res.text();
+      try { const data = JSON.parse(text); okResp = !!data.ok; }
+      catch { okResp = /ok/i.test(text); }
+
+      if (okResp) {
+        openModal();
+        form.reset();
+        [nameEl, surnameEl, ageEl, genderEl, cityEl, phoneEl, emailEl, jobEl, msgEl].forEach((el) => setHint(el, ''));
+      } else {
+        alert("We couldn't send your message right now. Please try again later.");
+        console.error("GAS response:", text);
+      }
+    } catch (err) {
+      alert("Network error. Please try again.");
+      console.error(err);
+    } finally {
+      // Revert the button 
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
   });
 
-  // Modal helpers 
   function openModal() {
     modal.removeAttribute('hidden');
     document.body.style.overflow = 'hidden';
     const closeBtn = modal.querySelector('[data-close]');
     if (closeBtn) closeBtn.focus();
   }
-
   function closeModal() {
     modal.setAttribute('hidden', '');
     document.body.style.overflow = '';
   }
 
   modal.addEventListener('click', (e) => {
-    if (e.target.matches('[data-close]') || e.target.classList.contains('modal__backdrop')) {
-      closeModal();
-    }
+    if (e.target.matches('[data-close]') || e.target.classList.contains('modal__backdrop')) closeModal();
   });
-
-  modal.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-  });
+  modal.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 })();
-
-
-
