@@ -413,3 +413,135 @@
   triggers.forEach((btn) => setOpen(btn, false));
 })();
 
+// Inquiry form and validation 
+(function () {
+  const form = document.getElementById('bizForm');
+  if (!form) return;
+
+  const nameEl = form.querySelector('#bizName');
+  const emailEl = form.querySelector('#bizEmail');
+  const phoneEl = form.querySelector('#bizPhone');
+  const msgEl = form.querySelector('#bizMsg');
+
+  const modal = document.getElementById('bizModal');
+  const summaryList = document.getElementById('bizSummary');
+
+  const emailHint = emailEl.nextElementSibling;
+  const phoneHint = phoneEl.nextElementSibling;
+  const nameHint = nameEl.nextElementSibling;
+
+  function setHint(el, hintEl, message, isError) {
+    if (!hintEl) return;
+    hintEl.textContent = message || '';
+    hintEl.classList.toggle('field-hint--error', !!isError);
+    el.classList.toggle('is-invalid', !!isError);
+  }
+
+  function validateName() {
+    const v = nameEl.value.trim();
+    if (!v) {
+      setHint(nameEl, nameHint, 'Please enter your full name.', true);
+      return false;
+    }
+    setHint(nameEl, nameHint, 'Looks good!');
+    return true;
+  }
+
+  function validateEmail() {
+    const v = emailEl.value.trim();
+    // validation for correct email format
+    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    if (!ok) {
+      setHint(emailEl, emailHint, 'Please enter a valid email address (e.g., you@example.com).', true);
+      return false;
+    }
+    setHint(emailEl, emailHint, 'Looks good!');
+    return true;
+  }
+
+  function validatePhone() {
+    const digits = phoneEl.value.replace(/\D+/g, ''); //Validation for appropriate phone number length
+    if (digits.length !== 10) {
+      setHint(phoneEl, phoneHint, 'Phone must be exactly 10 digits.', true);
+      return false;
+    }
+    setHint(phoneEl, phoneHint, 'Perfect length!');
+    return true;
+  }
+
+  // Live validation as the user types
+  nameEl.addEventListener('input', validateName);
+  emailEl.addEventListener('input', validateEmail);
+  phoneEl.addEventListener('input', () => {
+    
+    validatePhone();
+  });
+
+  // Submit error handling
+  form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const okName = validateName();
+  const okEmail = validateEmail();
+  const okPhone = validatePhone();
+
+  const roles = Array.from(form.querySelectorAll('input[name="roles"]:checked'))
+    .map((c) => c.value);
+
+  const hasRole = roles.length > 0;
+  if (!hasRole) {
+    alert('Please select at least one option under "How can we help you, help us?"');
+    return;
+  }
+
+  if (!(okName && okEmail && okPhone && hasRole)) {
+    const firstInvalid = form.querySelector('.is-invalid');
+    if (firstInvalid) firstInvalid.focus();
+    return;
+  }
+
+  const digits = phoneEl.value.replace(/\D+/g, '');
+  const summary = [
+    { label: 'Name', value: nameEl.value.trim() },
+    { label: 'Email', value: emailEl.value.trim() },
+    { label: 'Phone', value: digits.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3') },
+    { label: 'Roles', value: roles.join(', ') },
+    { label: 'Notes', value: msgEl.value.trim() || '—' },
+  ];
+
+  summaryList.innerHTML = '';
+  summary.forEach((item) => {
+    const li = document.createElement('li');
+    li.textContent = `${item.label}: ${item.value}`;
+    summaryList.appendChild(li);
+  });
+
+  openModal();
+});
+
+  // Modal helpers
+  function openModal() {
+    modal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    
+    const closeBtn = modal.querySelector('[data-close]');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+  }
+
+  modal.addEventListener('click', (e) => {
+    if (e.target.matches('[data-close]') || e.target.classList.contains('modal__backdrop')) {
+      closeModal();
+    }
+  });
+
+  modal.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+})();
+
+

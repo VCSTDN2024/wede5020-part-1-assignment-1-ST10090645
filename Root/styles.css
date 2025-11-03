@@ -704,7 +704,6 @@ html { background-color: #f1dec9; }
   gap: 0.75rem;
 }
 
-/* Each item uses your parchment card look already on the element */
 .accordion__item {
   padding: 0;
 }
@@ -736,7 +735,7 @@ html { background-color: #f1dec9; }
   font-weight: 700;
 }
 
-/* +/- icon: pure CSS, flips on [aria-expanded="true"] */
+/* +/- icon  */
 .accordion__icon {
   width: 24px;
   height: 24px;
@@ -773,7 +772,7 @@ html { background-color: #f1dec9; }
   opacity: 0;
 }
 
-/* Panel: animated open/close using grid rows (no jumpy max-height) */
+/* Panel: animated open/close using grid rows */
 .accordion__panel {
   display: grid;
   grid-template-rows: 0fr;
@@ -799,11 +798,11 @@ html { background-color: #f1dec9; }
   }
 }
 
-/* --- FAQ panel clipping + margin guard --- */
+/* FAQ panel clipping + margin guard */
 .accordion__panel {
-  display: grid;                    /* ensure grid context is applied */
-  grid-template-rows: 0fr;          /* collapsed */
-  overflow: hidden;                 /* clip any inner margins */
+  display: grid;                    
+  grid-template-rows: 0fr;          
+  overflow: hidden;                 
 }
 
 .accordion__panel[aria-hidden="false"] {
@@ -816,7 +815,7 @@ html { background-color: #f1dec9; }
   padding: 0 1rem 1rem 1rem;
 }
 
-/* avoid a top “bump” when opened */
+
 .accordion__content > *:first-child {
   margin-top: 0.75rem;
 }
@@ -825,6 +824,155 @@ html { background-color: #f1dec9; }
 .accordion__content > *:last-child {
   margin-bottom: 0;
 }
+
+/*  Business Inquiries form  */
+.biz-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.biz-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .biz-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .biz-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.biz-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.biz-field label {
+  font-weight: 700;
+  color: #4b2e16;
+}
+
+.biz-form input[type="text"],
+.biz-form input[type="email"],
+.biz-form input[type="tel"],
+.biz-form textarea {
+  background-color: #f6ebdb;
+  color: #2b1d0e;
+  border: 2px solid #8b5e3c;
+  border-radius: 8px;
+  padding: 0.5rem 0.65rem;
+}
+
+.biz-form input::placeholder,
+.biz-form textarea::placeholder {
+  color: #6b4a2d;
+}
+
+.field-hint {
+  min-height: 1em;
+  font-size: 0.9rem;
+  color: #4b2e16;
+}
+
+.is-invalid {
+  border-color: #b00020 !important;
+  box-shadow: 0 0 0 2px #b0002026;
+}
+
+.field-hint--error {
+  color: #b00020;
+}
+
+/* Checkboxes */
+.biz-checks {
+  border: 2px solid #8b5e3c;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  background-color: #f6ebdb;
+}
+
+.biz-checks legend {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #4b2e16;
+}
+
+.biz-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-block: 0.25rem;
+}
+
+.biz-check input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #8b5e3c;
+}
+
+/* Form actions */
+.biz-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Form Modal */
+.modal[hidden] {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal__dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: min(720px, 92vw);
+  width: 100%;
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem 1.2rem;
+}
+
+.modal__title {
+  margin: 0;
+}
+
+.modal__lead {
+  margin: 0;
+}
+
+.modal__list {
+  display: grid;
+  gap: 0.35rem;
+  padding-left: 1rem;
+  list-style: disc;
+}
+
+.modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
 
 
 

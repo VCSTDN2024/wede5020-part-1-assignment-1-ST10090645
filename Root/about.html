@@ -193,6 +193,122 @@
     </div>
   </div>
 </section>
+
+<!-- Inquiries Section form section -->
+<section class="section">
+  <div class="container">
+    <h2 class="section__title">Business Inquiries</h2>
+
+    <form
+      id="bizForm"
+      class="parchment-card biz-form"
+      novalidate>
+      
+      <!-- Personal info -->
+      <div class="biz-grid">
+
+        <div class="biz-field">
+          <label for="bizName">Full Name</label>
+          <input
+            id="bizName"
+            name="name"
+            type="text"
+            required
+            autocomplete="name"
+            placeholder="e.g., Tifa Lockhart" />
+          <small class="field-hint" aria-live="polite"></small>
+        </div>
+
+        <div class="biz-field">
+          <label for="bizEmail">Email</label>
+          <input
+            id="bizEmail"
+            name="email"
+            type="email"
+            required
+            autocomplete="email"
+            placeholder="you@example.com" />
+          <small class="field-hint" aria-live="polite"></small>
+        </div>
+
+        <div class="biz-field">
+          <label for="bizPhone">Phone (10 digits)</label>
+          <input
+            id="bizPhone"
+            name="phone"
+            type="tel"
+            required
+            inputmode="tel"
+            placeholder="0712345678" />
+          <small class="field-hint" aria-live="polite"></small>
+        </div>
+
+      </div>
+
+      <!-- Checkboxes -->
+      <fieldset class="biz-checks">
+        <legend>How can we help you, help us?</legend>
+
+        <label class="biz-check">
+          <input
+            type="checkbox"
+            name="roles"
+            value="DM (Dungeon Master)" />
+          <span>I would like to be a DM (Dungeon Master) for your games.</span>
+        </label>
+
+        <label class="biz-check">
+          <input
+            type="checkbox"
+            name="roles"
+            value="TCG mentor" />
+          <span>I would like to be a TCG mentor.</span>
+        </label>
+
+        <label class="biz-check">
+          <input
+            type="checkbox"
+            name="roles"
+            value="Sponsor an event" />
+          <span>I would like to sponsor an event.</span>
+        </label>
+      </fieldset>
+
+      <!-- Optional message -->
+      <div class="biz-field">
+        <label for="bizMsg">Additional Notes (optional)</label>
+        <textarea
+          id="bizMsg"
+          name="message"
+          rows="4"
+          placeholder="Share any extra details you'd like us to know…"></textarea>
+        <small class="field-hint" aria-live="polite"></small>
+      </div>
+
+      <div class="biz-actions">
+        <button class="btn btn--primary" type="submit">Submit Inquiry</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Success Modal -->
+<div class="modal" id="bizModal" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__dialog parchment-card" role="dialog" aria-modal="true" aria-labelledby="bizModalTitle">
+    <h3 id="bizModalTitle" class="modal__title">Inquiry Submitted</h3>
+    <p class="modal__lead">Thank you! We’ve received your details:</p>
+
+    <ul class="modal__list" id="bizSummary">
+    
+    </ul>
+
+    <div class="modal__actions">
+      <button class="btn btn--primary" type="button" data-close>Close</button>
+    </div>
+  </div>
+</div>
+
   </main>
 
   <!-- Footer -->
