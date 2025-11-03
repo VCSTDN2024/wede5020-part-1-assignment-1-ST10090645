@@ -339,5 +339,25 @@ Code taken from and inspired by: https://developer.mozilla.org/en-US/docs/Web/CS
   }
 }
 
+/* fade-in/fade out transition animations */
+:root { --fade-ms: 300ms; }
+
+@media (prefers-reduced-motion: no-preference) {
+  body.js-fade {
+    opacity: 0;
+    transition: opacity var(--fade-ms) ease;
+    will-change: opacity;
+  }
+  body.js-fade.is-visible {
+    opacity: 1;
+ 
+    @starting-style { opacity: 0; }
+  }
+}
+
+html { background-color: #f1dec9; } 
+
+
+
 
 

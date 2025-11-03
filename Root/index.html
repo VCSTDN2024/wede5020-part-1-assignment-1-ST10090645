@@ -6,21 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<!-- class for screen transition animations -->
+<body class="js-fade">
   <!-- Header code for the top of the screen, logo link and links to the other pages. 
    Ensured that all links open the page in a separate tab-->
   <header class="site-header">
     <div class="container header-flex">
       <div class="logo">
-        <a href="index.html" target="_blank">For The Table</a>
+        <a href="index.html">For The Table</a>
       </div>
       <nav>
         <ul>
-          <li><a class="active" href="index.html" target="_blank">Home</a></li>
-          <li><a href="shop.html" target="_blank">Shop</a></li>
-          <li><a href="events.html" target="_blank">Events</a></li>
-          <li><a href="about.html" target="_blank">About</a></li>
-          <li><a href="contact.html" target="_blank">Contact</a></li>
+          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -36,7 +37,7 @@
         <h1 class="hero__title">
           Begin your journey today; countless worlds await. Are you with us?
         </h1>
-        <a class="btn btn--primary" href="shop.html" target="_blank">Shop Now</a>
+        <a class="btn btn--primary" href="shop.html">Shop Now</a>
       </div>
     </section>
 
@@ -51,21 +52,21 @@
             <img src="./Images/StarterSet.jpg" alt="D&D Starter Set: Dragons of Stormwreck Isle" class="product-img">
             <h3 class="product-card__name">D&D Starter Set</h3>
             <p class="product-card__price">R500</p>
-            <a class="btn btn--ghost" href="shop.html" target="_blank">View</a>
+            <a class="btn btn--ghost" href="shop.html">View</a>
           </article>
 
           <article class="product-card">
             <img src="./Images/Gloomhaven.jpg" alt="Gloomhaven (Board Game)" class="product-img">
             <h3 class="product-card__name">Gloomhaven (Board Game)</h3>
             <p class="product-card__price">R1400</p>
-            <a class="btn btn--ghost" href="shop.html" target="_blank">View</a>
+            <a class="btn btn--ghost" href="shop.html">View</a>
           </article>
 
           <article class="product-card">
             <img src="./Images/Vortex.jpg" alt="Vortex Dice Set" class="product-img">
             <h3 class="product-card__name">Vortex Dice Set</h3>
             <p class="product-card__price">R180</p>
-            <a class="btn btn--ghost" href="shop.html" target="_blank">View</a>
+            <a class="btn btn--ghost" href="shop.html">View</a>
           </article>
         </div>
       </div>
@@ -80,7 +81,7 @@
           <img src="./Images/MelroseArch.jpg" alt="Vortex Dice Set" class="event-img">
           <p>We have a lot of exciting events planned for the year, such as cosplay contests,
             tournaments and much more! Stay posted for dates and more info!</p>
-          <a class="btn btn--primary" href="events.html" target="_blank">See Events</a>
+          <a class="btn btn--primary" href="events.html">See Events</a>
         </div>
       </div>
     </section>
@@ -95,7 +96,7 @@
             miniatures and everything in between. Whether you’ve braved the deepest dungeons or you’re
             just starting out, we’re here to equip you for your adventures.
           </p>
-          <a class="btn btn--ghost" href="about.html" target="_blank">Learn More</a>
+          <a class="btn btn--ghost" href="about.html">Learn More</a>
         </div>
         <div class="about-teaser__media">
           <img src="./Images/StockImage1.jpg" alt="Vortex Dice Set" class="about-img">
@@ -109,5 +110,6 @@
   <footer>
     <p>&copy; For The Table Ltd., 2025</p>
   </footer>
+   <script src="functionality.js" defer></script>
 </body>
 </html>
