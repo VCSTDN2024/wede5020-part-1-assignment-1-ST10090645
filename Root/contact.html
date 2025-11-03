@@ -80,23 +80,144 @@
       </div>
     </section>
 
-    <!-- embedded Google Form -->
-    <section class="section">
-      <div class="container">
-        <h2 class="section__title">Get in Touch</h2>
-        <div class="parchment-card">
-          <div class="embed-tall">
-            <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLSeUpICaAHYsxCCZGQiQURrgEg_iGIttDgj-B6W5oLv7AdIzxA/viewform?embedded=true"
-              frameborder="0"
-              marginheight="0"
-              marginwidth="0"
-              title="Contact Form">
-            </iframe>
-          </div>
+    <!-- Contact form -->
+<section class="section">
+  <div class="container">
+    <h2 class="section__title">Get in Touch</h2>
+
+    <form
+      id="contactForm"
+      class="parchment-card contact-form"
+      novalidate>
+
+      <div class="contact-grid">
+        <div class="contact-field">
+          <label for="cName">Name</label>
+          <input
+            id="cName"
+            name="name"
+            type="text"
+            required
+            autocomplete="given-name"
+            placeholder="e.g., Tifa" />
+          <small class="field-hint" aria-live="polite"></small>
+        </div>
+
+        <div class="contact-field">
+          <label for="cSurname">Surname</label>
+          <input
+            id="cSurname"
+            name="surname"
+            type="text"
+            required
+            autocomplete="family-name"
+            placeholder="e.g., Lockhart" />
+          <small class="field-hint" aria-live="polite"></small>
+        </div>
+
+        <div class="contact-field">
+          <label for="cAge">Age</label>
+          <input
+            id="cAge"
+            name="age"
+            type="number"
+            inputmode="numeric"
+            min="1"
+            max="120"
+            required
+            placeholder="e.g., 27" />
+          <small class="field-hint" aria-live="polite"></small>
+        </div>
+
+        <div class="contact-field">
+          <label for="cGender">Gender</label>
+          <select id="cGender" name="gender" required>
+            <option value="">Select…</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+            <option>Prefer not to say</option>
+          </select>
+          <small class="field-hint" aria-live="polite"></small>
+        </div>
+
+        <div class="contact-field">
+          <label for="cCity">City</label>
+          <input
+            id="cCity"
+            name="city"
+            type="text"
+            required
+            placeholder="e.g., Johannesburg" />
+          <small class="field-hint" aria-live="polite"></small>
+        </div>
+
+        <div class="contact-field">
+          <label for="cPhone">Phone (10 digits)</label>
+          <input
+            id="cPhone"
+            name="phone"
+            type="tel"
+            inputmode="tel"
+            required
+            placeholder="0712345678" />
+          <small class="field-hint" aria-live="polite"></small>
+        </div>
+
+        <div class="contact-field">
+          <label for="cEmail">Email Address</label>
+          <input
+            id="cEmail"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            placeholder="you@example.com" />
+          <small class="field-hint" aria-live="polite"></small>
+        </div>
+
+        <div class="contact-field">
+          <label for="cJob">Occupation</label>
+          <input
+            id="cJob"
+            name="occupation"
+            type="text"
+            required
+            placeholder="e.g., Software Developer" />
+          <small class="field-hint" aria-live="polite"></small>
         </div>
       </div>
-    </section>
+
+      <div class="contact-field">
+        <label for="cMessage">Message</label>
+        <textarea
+          id="cMessage"
+          name="message"
+          rows="6"
+          required
+          placeholder="Tell us how we can help…"></textarea>
+        <small class="field-hint" aria-live="polite"></small>
+      </div>
+
+      <div class="contact-actions">
+        <button class="btn btn--primary" type="submit">Send Message</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Success Modal (same as about us page) -->
+<div class="modal" id="contactModal" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__dialog parchment-card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <h3 id="contactModalTitle" class="modal__title">Message Sent</h3>
+    <p class="modal__lead">Thanks for reaching out! We’ve received your details and will respond soon.</p>
+    <div class="modal__actions">
+      <button class="btn btn--primary" type="button" data-close>Close</button>
+    </div>
+  </div>
+</div>
+
 
     <!-- Link back to home page -->
     <section class="section">

@@ -544,4 +544,149 @@
   });
 })();
 
+/* Contact page form and modal */
+(function () {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  const nameEl = form.querySelector('#cName');
+  const surnameEl = form.querySelector('#cSurname');
+  const ageEl = form.querySelector('#cAge');
+  const genderEl = form.querySelector('#cGender');
+  const cityEl = form.querySelector('#cCity');
+  const phoneEl = form.querySelector('#cPhone');
+  const emailEl = form.querySelector('#cEmail');
+  const jobEl = form.querySelector('#cJob');
+  const msgEl = form.querySelector('#cMessage');
+
+  const modal = document.getElementById('contactModal');
+
+  function hintFor(el) {
+    return el?.nextElementSibling?.matches('.field-hint')
+      ? el.nextElementSibling
+      : null;
+  }
+
+  function setHint(el, message, isError) {
+    const hint = hintFor(el);
+    if (!hint) return;
+    hint.textContent = message || '';
+    hint.classList.toggle('field-hint--error', !!isError);
+    el.classList.toggle('is-invalid', !!isError);
+  }
+
+  function reqText(el, label) {
+    const v = el.value.trim();
+    if (!v) {
+      setHint(el, `Please enter your ${label}.`, true);
+      return false;
+    }
+    setHint(el, 'Looks good!');
+    return true;
+  }
+
+  function validateEmail() {
+    const v = emailEl.value.trim();
+    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    if (!ok) {
+      setHint(emailEl, 'Please enter a valid email address (e.g., you@example.com).', true);
+      return false;
+    }
+    setHint(emailEl, 'Looks good!');
+    return true;
+  }
+
+  function validatePhone() {
+    const digits = phoneEl.value.replace(/\D+/g, '');
+    if (digits.length !== 10) {
+      setHint(phoneEl, 'Phone must be exactly 10 digits.', true);
+      return false;
+    }
+    setHint(phoneEl, 'Perfect length!');
+    return true;
+  }
+
+  function validateAge() {
+    const n = Number(ageEl.value);
+    if (!Number.isFinite(n) || n < 1 || n > 120) {
+      setHint(ageEl, 'Please enter a valid age (1–120).', true);
+      return false;
+    }
+    setHint(ageEl, 'Looks good!');
+    return true;
+  }
+
+  function validateGender() {
+    if (!genderEl.value) {
+      setHint(genderEl, 'Please select a gender option.', true);
+      return false;
+    }
+    setHint(genderEl, 'Thanks!');
+    return true;
+  }
+
+  // Live validation
+  nameEl.addEventListener('input', () => reqText(nameEl, 'name'));
+  surnameEl.addEventListener('input', () => reqText(surnameEl, 'surname'));
+  cityEl.addEventListener('input', () => reqText(cityEl, 'city'));
+  jobEl.addEventListener('input', () => reqText(jobEl, 'occupation'));
+  msgEl.addEventListener('input', () => reqText(msgEl, 'message'));
+  emailEl.addEventListener('input', validateEmail);
+  phoneEl.addEventListener('input', validatePhone);
+  ageEl.addEventListener('input', validateAge);
+  genderEl.addEventListener('change', validateGender);
+
+  // Submit
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const ok =
+      reqText(nameEl, 'name') &&
+      reqText(surnameEl, 'surname') &&
+      validateAge() &&
+      validateGender() &&
+      reqText(cityEl, 'city') &&
+      validatePhone() &&
+      validateEmail() &&
+      reqText(jobEl, 'occupation') &&
+      reqText(msgEl, 'message');
+
+    if (!ok) {
+      const firstInvalid = form.querySelector('.is-invalid');
+      if (firstInvalid) firstInvalid.focus();
+      return;
+    }
+
+    openModal();
+    form.reset();
+    [nameEl, surnameEl, ageEl, genderEl, cityEl, phoneEl, emailEl, jobEl, msgEl].forEach((el) =>
+      setHint(el, '')
+    );
+  });
+
+  // Modal helpers 
+  function openModal() {
+    modal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    const closeBtn = modal.querySelector('[data-close]');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+  }
+
+  modal.addEventListener('click', (e) => {
+    if (e.target.matches('[data-close]') || e.target.classList.contains('modal__backdrop')) {
+      closeModal();
+    }
+  });
+
+  modal.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+})();
+
+
 

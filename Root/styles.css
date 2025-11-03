@@ -973,6 +973,83 @@ html { background-color: #f1dec9; }
   gap: 0.5rem;
 }
 
+/* --- Contact Form --- */
+.contact-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.contact-field label {
+  font-weight: 700;
+  color: #4b2e16;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form input[type="number"],
+.contact-form select,
+.contact-form textarea {
+  background-color: #f6ebdb;
+  color: #2b1d0e;
+  border: 2px solid #8b5e3c;
+  border-radius: 8px;
+  padding: 0.5rem 0.65rem;
+}
+
+.contact-form select {
+  cursor: pointer;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #6b4a2d;
+}
+
+.field-hint {
+  min-height: 1em;
+  font-size: 0.9rem;
+  color: #4b2e16;
+}
+
+.is-invalid {
+  border-color: #b00020 !important;
+  box-shadow: 0 0 0 2px #b0002026;
+}
+
+.field-hint--error {
+  color: #b00020;
+}
+
+.contact-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+
 
 
 
