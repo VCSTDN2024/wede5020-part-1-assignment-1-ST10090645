@@ -371,3 +371,45 @@
     input && input.focus();
   });
 })();
+
+// Accordion FAQ section
+
+(function () {
+  const root = document.querySelector('.faq .accordion');
+  if (!root) return;
+
+  const triggers = Array.from(root.querySelectorAll('.accordion__trigger'));
+
+  function setOpen(trigger, open) {
+    const panelId = trigger.getAttribute('aria-controls');
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+
+    trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+  }
+
+  // Click to toggle
+  triggers.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      setOpen(btn, !isOpen);
+    });
+
+    // close with Escape button on keyboard when focus is inside the panel
+    const panelId = btn.getAttribute('aria-controls');
+    const panel = document.getElementById(panelId);
+    if (panel) {
+      panel.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          setOpen(btn, false);
+          btn.focus();
+        }
+      });
+    }
+  });
+
+  // Start closed for all
+  triggers.forEach((btn) => setOpen(btn, false));
+})();
+

@@ -693,6 +693,141 @@ html { background-color: #f1dec9; }
   align-items: center;
 }
 
+/* --- FAQ / Accordion --- */
+.faq {
+  margin-top: 1rem;
+}
+
+.accordion {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+/* Each item uses your parchment card look already on the element */
+.accordion__item {
+  padding: 0;
+}
+
+/* Trigger button (full-width, rectangular) */
+.accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  background-color: #f6ebdb;
+  color: #2b1d0e;
+  border: 0;
+  border-bottom: 2px solid #8b5e3c;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.accordion__trigger:hover {
+  background-color: #e6d3b3;
+}
+
+/* Question text */
+.accordion__question {
+  font-family: Arial, Avenir, Aptos, sans-serif;
+  font-weight: 700;
+}
+
+/* +/- icon: pure CSS, flips on [aria-expanded="true"] */
+.accordion__icon {
+  width: 24px;
+  height: 24px;
+  display: inline-grid;
+  place-items: center;
+  border: 2px solid #8b5e3c;
+  border-radius: 6px;
+  background-color: #f1e3ce;
+  box-shadow: 0 2px 0 #8b5e3c33;
+  position: relative;
+}
+
+.accordion__icon::before,
+.accordion__icon::after {
+  content: "";
+  position: absolute;
+  background-color: #2b1d0e;
+  border-radius: 1px;
+}
+
+.accordion__icon::before {
+  width: 12px;
+  height: 2px;
+}
+
+.accordion__icon::after {
+  width: 2px;
+  height: 12px;
+  transition: opacity var(--fade-ms, 300ms) ease;
+}
+
+/* When open, hide the vertical bar to show a "-" */
+.accordion__trigger[aria-expanded="true"] .accordion__icon::after {
+  opacity: 0;
+}
+
+/* Panel: animated open/close using grid rows (no jumpy max-height) */
+.accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--fade-ms, 300ms) ease;
+  background-color: #f6ebdb;
+  border: 2px solid #8b5e3c;
+  border-top: 0;
+  border-radius: 0 0 12px 12px;
+}
+
+.accordion__panel[aria-hidden="false"] {
+  grid-template-rows: 1fr;
+}
+
+.accordion__content {
+  overflow: hidden;
+  padding: 0 1rem 1rem 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accordion__panel {
+    transition: none;
+  }
+}
+
+/* --- FAQ panel clipping + margin guard --- */
+.accordion__panel {
+  display: grid;                    /* ensure grid context is applied */
+  grid-template-rows: 0fr;          /* collapsed */
+  overflow: hidden;                 /* clip any inner margins */
+}
+
+.accordion__panel[aria-hidden="false"] {
+  grid-template-rows: 1fr;          /* expanded */
+}
+
+/* keep content padding but prevent margin bleed */
+.accordion__content {
+  overflow: hidden;
+  padding: 0 1rem 1rem 1rem;
+}
+
+/* avoid a top “bump” when opened */
+.accordion__content > *:first-child {
+  margin-top: 0.75rem;
+}
+
+/* tidy bottom edge */
+.accordion__content > *:last-child {
+  margin-bottom: 0;
+}
+
+
+
 
 
 
